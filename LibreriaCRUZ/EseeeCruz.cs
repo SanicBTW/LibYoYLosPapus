@@ -2,11 +2,10 @@
 {
     public class EseeeCruz
     {
-
-        //Ideas para la libreria cruz jaja xd - ruleta rusa
         //mejorar la vaina esta
         public void PreguntaCruz(string question)
         {
+            //ver 1.1
             int randNum = 0;
             string Response = string.Empty;
             bool matched = false;
@@ -15,10 +14,13 @@
             Random random = new Random();
             randNum = random.Next(0, decisiones.Length);
             Response = question + "\n" + decisiones[randNum];
-            string[] xdd = new string[] { "¿Es Cruz Maricon?", "¿Es Cruz maricon?", "¿Es cruz maricon?", "¿es cruz maricon?", "¿Es Cruz Un Maricon?", "¿Es Cruz Un maricon?", "¿Es Cruz un maricon?", "¿Es cruz un maricon?", "¿es cruz un maricon?" };
-            foreach (string maybe in xdd)
+            
+            string questToLower = question.ToLower();
+            if(questToLower == "¿es cruz maricon?" || questToLower == "¿es cruz un maricon?") 
             {
-                if (maybe == question) { Response = question + "\n" + decisiones[decisiones.Length - 1]; Console.WriteLine(Response); matched = true; }
+                matched = true;
+                Response = question + "\n" + decisiones[decisiones.Length - 1];
+                Console.WriteLine(Response);
             }
             if (question == null || !question.EndsWith("?") && !question.StartsWith("¿") && matched == false) { Console.WriteLine("Preguntame algo, no me dejes con la intriga tio "); }
             else if (matched == false) { Console.WriteLine(Response); }
